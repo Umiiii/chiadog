@@ -43,8 +43,9 @@ if __name__ == "__main__":
     args = parse_arguments()
     config = Config(Path(args.config))
     log_level = get_log_level(config.get_log_level_config())
+    fmt = "["+config.log_header + "]" + "[%(asctime)s] [%(levelname)8s] --- %(message)s (%(filename)s:%(lineno)s)"
     logging.basicConfig(
-        format="[%(asctime)s] [%(levelname)8s] --- %(message)s (%(filename)s:%(lineno)s)",
+        format=fmt,
         level=log_level,
         datefmt="%Y-%m-%d %H:%M:%S",
     )

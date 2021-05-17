@@ -16,6 +16,8 @@ class Config:
         with open(config_path, "r", encoding="UTF-8") as config_file:
             self._config = yaml.safe_load(config_file)
 
+        self.log_header = config_path
+
     def _get_child_config(self, key: str, required: bool = True) -> Optional[dict]:
         if key not in self._config.keys():
             if required:
